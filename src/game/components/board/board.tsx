@@ -7,6 +7,7 @@ export type ActivePlayer = 'X' | 'O';
 
 interface IProps extends PropsWithChildren {
   activePlayer: ActivePlayer;
+  onSquareClick: () => void;
 }
 
 interface ISquare {
@@ -28,6 +29,8 @@ export function Board(props: IProps): ReactElement {
         return square;
       });
     });
+
+    props.onSquareClick();
   }
 
   const [squares, setSquares] = useState<ISquare[]>(

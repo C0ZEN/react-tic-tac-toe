@@ -43,12 +43,13 @@ export function Square(props: IProps): ReactElement {
   }
 
   function onClick(event: SyntheticEvent): void {
+    console.log(onClick.name);
     event.stopPropagation();
     props.onClick(event);
   }
 
   return (
-    <button className={getContainerClasses()} tabIndex={isClickable ? 0 : -1} onClick={onClick}>
+    <button className={getContainerClasses()} tabIndex={isClickable ? 0 : -1} onClick={onClick} disabled={!isClickable}>
       {props.marker}
     </button>
   );
