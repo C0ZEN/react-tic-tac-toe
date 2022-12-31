@@ -1,6 +1,6 @@
 import './game.scss';
 import { ReactElement, useState } from 'react';
-import { Board } from './components/board/board';
+import { ActivePlayer, Board } from './components/board/board';
 import { Feed } from './components/feed/feed';
 
 interface IFeedItem {
@@ -24,15 +24,15 @@ export function Game(): ReactElement {
   });
 
   const [isXNextPlayer] = useState<boolean>(true);
-  const activePlayer = `Next player: ${isXNextPlayer ? 'X' : 'O'}`;
+  const activePlayer: ActivePlayer = isXNextPlayer ? 'X' : 'O';
 
   return (
     <div className={'game'}>
       <div className={'board-container'}>
-        <Board></Board>
+        <Board activePlayer={activePlayer}></Board>
       </div>
       <div className={'information'}>
-        <p className={'active-player'}>{activePlayer}</p>
+        <p className={'active-player'}>Next player: {activePlayer}</p>
         <Feed>{feedList}</Feed>
       </div>
     </div>

@@ -3,15 +3,34 @@ import { PropsWithChildren, ReactElement, useState } from 'react';
 import { times } from 'lodash-es';
 import { Marker, Square } from '../square/square';
 
-type Props = PropsWithChildren;
+export type ActivePlayer = 'X' | 'O';
+
+interface IProps extends PropsWithChildren {
+  activePlayer: ActivePlayer;
+}
 
 interface ISquare {
   id: number;
   marker: Marker;
 }
 
-export function Board(props: Props): ReactElement {
-  const [squares] = useState<ISquare[]>(
+export function Board(props: IProps): ReactElement {
+  function onSquareClick(clickedSquare: ISquare): void {
+    setSquares((squares: ISquare[]): ISquare[] => {
+      return squares.map((square: ISquare): ISquare => {
+        if (square.id === clickedSquare.id) {
+          return {
+            ...clickedSquare,
+            marker: props.activePlayer,
+          };
+        }
+
+        return square;
+      });
+    });
+  }
+
+  const [squares, setSquares] = useState<ISquare[]>(
     times(9, (index: number): ISquare => {
       return {
         id: index,
@@ -31,6 +50,7 @@ export function Board(props: Props): ReactElement {
         hasBorderBottom={isLastRow}
         hasBorderLeft
         marker={square.marker}
+        onClick={() => onSquareClick(square)}
       ></Square>
     );
   });

@@ -7,6 +7,9 @@ $border-color: colors.$color-good-samaritan;
   height: square.$square-size;
   width: square.$square-size;
   flex-shrink: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
 
   &.border-top {
     border-top: 1px solid $border-color;
@@ -22,5 +25,9 @@ $border-color: colors.$color-good-samaritan;
 
   &.border-left {
     border-left: 1px solid $border-color;
+  }
+
+  &.clickable {
+    cursor: pointer;
   }
 }

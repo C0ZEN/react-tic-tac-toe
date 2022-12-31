@@ -1,7 +1,8 @@
 import './square.scss';
-import { PropsWithChildren, ReactElement } from 'react';
+import { PropsWithChildren, ReactElement, SyntheticEvent } from 'react';
+import { ActivePlayer } from '../board/board';
 
-export type Marker = 'X' | 'O' | null;
+export type Marker = ActivePlayer | null;
 
 interface IProps extends PropsWithChildren {
   hasBorderBottom: boolean;
@@ -9,9 +10,12 @@ interface IProps extends PropsWithChildren {
   hasBorderRight: boolean;
   hasBorderTop: boolean;
   marker: Marker;
+  onClick: (event: SyntheticEvent) => void;
 }
 
 export function Square(props: IProps): ReactElement {
+  const isClickable: boolean = props.marker === null;
+
   function getContainerClasses(): string {
     const classes: Set<string> = new Set<string>(['square']);
 
@@ -31,12 +35,21 @@ export function Square(props: IProps): ReactElement {
       classes.add('border-left');
     }
 
+    if (isClickable) {
+      classes.add('clickable');
+    }
+
     return Array.from(classes.values()).join(' ');
   }
 
+  function onClick(event: SyntheticEvent): void {
+    event.stopPropagation();
+    props.onClick(event);
+  }
+
   return (
-    <div className={getContainerClasses()}>
-      <p>{props.marker}</p>
-    </div>
+    <button className={getContainerClasses()} tabIndex={isClickable ? 0 : -1} onClick={onClick}>
+      {props.marker}
+    </button>
   );
 }
