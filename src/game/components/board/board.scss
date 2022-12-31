@@ -1,0 +1,11 @@
+@use '../../../styles/components/square' as square;
+
+.board {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  // + 1rem to take into account the borders
+  max-width: square.$square-size * 3 + 1rem;
+}

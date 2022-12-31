@@ -1,0 +1,26 @@
+@use '../../../styles/colors' as colors;
+@use '../../../styles/components/square' as square;
+
+$border-color: colors.$color-good-samaritan;
+
+.square {
+  height: square.$square-size;
+  width: square.$square-size;
+  flex-shrink: 0;
+
+  &.border-top {
+    border-top: 1px solid $border-color;
+  }
+
+  &.border-right {
+    border-right: 1px solid $border-color;
+  }
+
+  &.border-bottom {
+    border-bottom: 1px solid $border-color;
+  }
+
+  &.border-left {
+    border-left: 1px solid $border-color;
+  }
+}

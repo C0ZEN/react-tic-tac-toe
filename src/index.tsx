@@ -1,19 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import {Game} from './game/game';
-import {reportWebVitals} from './report-web-vitals';
-import {ErrorBoundary} from "./error/error";
+import './index.scss';
+import { Game } from './game/game';
+import { reportWebVitals } from './report-web-vitals';
+import { ErrorBoundary } from './error/error';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>
-      <ErrorBoundary>
-        <Game />
-      </ErrorBoundary>
+    <ErrorBoundary>
+      <Game />
+    </ErrorBoundary>
   </React.StrictMode>
 );
 

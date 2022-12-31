@@ -2,17 +2,17 @@ import { Component, ErrorInfo, PropsWithChildren, ReactNode } from 'react';
 
 type Props = PropsWithChildren;
 
-interface State {
+interface IState {
   hasError: boolean;
 }
 
-export class ErrorBoundary extends Component<Props, State> {
+export class ErrorBoundary extends Component<Props, IState> {
   constructor(props: Props) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error: unknown): State {
+  static getDerivedStateFromError(error: unknown): IState {
     return { hasError: true };
   }
 
