@@ -23,12 +23,18 @@ export function Game(): ReactElement {
     );
   });
 
+  const [isXNextPlayer] = useState<boolean>(true);
+  const activePlayer = `Next player: ${isXNextPlayer ? 'X' : 'O'}`;
+
   return (
     <div className={'game'}>
       <div className={'board-container'}>
         <Board></Board>
       </div>
-      <Feed>{feedList}</Feed>
+      <div className={'information'}>
+        <p className={'active-player'}>{activePlayer}</p>
+        <Feed>{feedList}</Feed>
+      </div>
     </div>
   );
 }

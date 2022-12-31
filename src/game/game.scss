@@ -9,7 +9,13 @@
     margin-right: 2rem;
   }
 
-  .feed-item {
-    margin: 0 0 0.5rem 0;
+  .information {
+    .active-player {
+      margin: 0 0 1rem 0;
+    }
+
+    .feed-item {
+      margin: 0 0 0.5rem 0;
+    }
   }
 }
