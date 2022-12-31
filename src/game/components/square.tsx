@@ -1,7 +1,7 @@
 import './square.css';
-import {PropsWithChildren, ReactNode, useState} from "react";
+import { PropsWithChildren, ReactNode, useState } from 'react';
 
-interface Props extends PropsWithChildren {}
+type Props = PropsWithChildren;
 
 type Marker = 'X' | 'O' | null;
 

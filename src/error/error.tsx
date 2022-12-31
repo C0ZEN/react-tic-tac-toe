@@ -1,6 +1,6 @@
 import { Component, ErrorInfo, PropsWithChildren, ReactNode } from 'react';
 
-interface Props extends PropsWithChildren {}
+type Props = PropsWithChildren;
 
 interface State {
   hasError: boolean;
