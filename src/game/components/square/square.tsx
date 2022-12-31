@@ -9,6 +9,7 @@ interface IProps extends PropsWithChildren {
   hasBorderLeft: boolean;
   hasBorderRight: boolean;
   hasBorderTop: boolean;
+  isDisabled: boolean;
   marker: Marker;
   onClick: (event: SyntheticEvent) => void;
 }
@@ -35,7 +36,7 @@ export function Square(props: IProps): ReactElement {
       classes.add('border-left');
     }
 
-    if (isClickable) {
+    if (isClickable && !props.isDisabled) {
       classes.add('clickable');
     }
 
@@ -49,7 +50,12 @@ export function Square(props: IProps): ReactElement {
   }
 
   return (
-    <button className={getContainerClasses()} tabIndex={isClickable ? 0 : -1} onClick={onClick} disabled={!isClickable}>
+    <button
+      className={getContainerClasses()}
+      tabIndex={isClickable ? 0 : -1}
+      onClick={onClick}
+      disabled={!isClickable || props.isDisabled}
+    >
       {props.marker}
     </button>
   );

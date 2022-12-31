@@ -57,6 +57,7 @@ export function Game(): ReactElement {
 
   const [isXNextPlayer, setIsXNextPlayer] = useState<boolean>(true);
   const activePlayer: ActivePlayer = isXNextPlayer ? 'X' : 'O';
+  const activePlayerElement: ReactElement = <p className={'active-player'}>Next player: {activePlayer}</p>;
 
   function changeActivePlayer(): void {
     console.log(changeActivePlayer.name);
@@ -66,21 +67,33 @@ export function Game(): ReactElement {
     });
   }
 
+  const [hasWon, setHasWon] = useState<boolean>(false);
+  const winnerPlayerElement: ReactElement = <p className={'winner'}>Winner: {activePlayer}</p>;
+
   function onSquareClick(): void {
     console.log(onSquareClick.name);
 
     addFeedItem();
-    turnDispatch('increment');
-    changeActivePlayer();
+
+    if (hasWonTheGame()) {
+      setHasWon(true);
+    } else {
+      turnDispatch('increment');
+      changeActivePlayer();
+    }
+  }
+
+  function hasWonTheGame(): boolean {
+    return false;
   }
 
   return (
     <div className={'game'}>
       <div className={'board-container'}>
-        <Board activePlayer={activePlayer} onSquareClick={onSquareClick}></Board>
+        <Board activePlayer={activePlayer} onSquareClick={onSquareClick} hasWon={hasWon}></Board>
       </div>
       <div className={'information'}>
-        <p className={'active-player'}>Next player: {activePlayer}</p>
+        {hasWon ? winnerPlayerElement : activePlayerElement}
         <Feed>{feedList}</Feed>
       </div>
     </div>

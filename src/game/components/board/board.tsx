@@ -7,6 +7,7 @@ export type ActivePlayer = 'X' | 'O';
 
 interface IProps extends PropsWithChildren {
   activePlayer: ActivePlayer;
+  hasWon: boolean;
   onSquareClick: () => void;
 }
 
@@ -53,6 +54,7 @@ export function Board(props: IProps): ReactElement {
         hasBorderBottom={isLastRow}
         hasBorderLeft
         marker={square.marker}
+        isDisabled={props.hasWon}
         onClick={() => onSquareClick(square)}
       ></Square>
     );
