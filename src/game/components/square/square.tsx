@@ -43,8 +43,8 @@ export function Square(props: IProps): ReactElement {
     return Array.from(classes.values()).join(' ');
   }
 
-  function onClick(event: SyntheticEvent): void {
-    console.log(onClick.name);
+  function click(event: SyntheticEvent): void {
+    console.log(click.name);
     event.stopPropagation();
     props.onClick(event);
   }
@@ -53,7 +53,7 @@ export function Square(props: IProps): ReactElement {
     <button
       className={getContainerClasses()}
       tabIndex={isClickable ? 0 : -1}
-      onClick={onClick}
+      onClick={click}
       disabled={!isClickable || props.isDisabled}
     >
       {props.marker}
