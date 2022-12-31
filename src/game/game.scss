@@ -1,3 +1,15 @@
 .game {
-    margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 2rem;
+
+  .board-container {
+    margin-right: 2rem;
+  }
+
+  .feed-item {
+    margin: 0 0 0.5rem 0;
+  }
 }
