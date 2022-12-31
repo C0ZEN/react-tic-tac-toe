@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import {App} from './app';
+import {Game} from './game/game';
 import {reportWebVitals} from './report-web-vitals';
+import {ErrorBoundary} from "./error/error";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App />
+      <ErrorBoundary>
+        <Game />
+      </ErrorBoundary>
   </React.StrictMode>
 );
 
